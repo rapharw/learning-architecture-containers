@@ -1,81 +1,34 @@
-# learning-architecture-containers > VERSION 01
+# learning-architecture-containers > VERSION 02
 
-![Architecture](../img/solution-v01.png)
+![Architecture](../img/solution-v02.png)
 
-a. Toda a requisição que chegar na porta 8080, redireciona internamente para porta 80
+Para o exercício version_02, utilizaremos o `docker-compose` para nos auxiliar a subir os serviços.
 
-b. Se uma requisição chegar na URI /api, verifica se:
-
-b1. Se /api/artists/ OU /api/artists/1/, redireciona para artists-api:80
-
-b2. Se /api/artists/1/works/, redireciona para artist-works-api:80
-
-## 1- Criar uma rede no Docker
-
-```
-docker network create my-network-svc 
-```
-
-## 2- Buildar imagem NetCore
+## Executar o docker-compose
 
 ```
 Caminho: 
-/learning-architecture-containers/solutions/artists-backend/artists
+/learning-architecture-containers/solutions
 
-docker build -t artists-api-image .
-
-docker run -d -p 5001:80 --name artists-api --network my-network-svc artists-api-image
+docker compose up
 ```
 
-Você pode testar chamando a URL: 
+Você pode testar chamando a URL de `artists-backend`: 
 
 a. http://localhost:5001/api/artists/
 
 b. http://localhost:5001/api/artists/1/
 
 
-## 3- Buildar a imagem Java
-
-Para o comando `mvn clean compile package` você precisa instalar previamente o Maven, ou utilizar alguma IDE para tal (seja o Eclipse, IntelliJ etc).
-
-```
-Caminho:
-/learning-architecture-containers/solutions/artist-works-backend/artist-works
-
-mvn clean compile package
-
-docker build -t artist-works-api-image .
-
-docker run -d -p 5002:5002 --name artist-works-api --network my-network-svc artist-works-api-image
-```
-
-Você pode testar chamando a URL: 
+Você pode testar chamando a URL de `artist-works-backend`: 
 
 a. http://localhost:5002/api/artists/1/works/
 
 
-## 4- Buildar a imagem NGINX
-
-```
-Caminho:
-/learning-architecture-containers/solutions/nginx
-
-docker build -t artists-nginx-image .
-
-docker run -d -p 8080:8080 --name artists-nginx --network my-network-svc artists-nginx-image
-```
-
-Você pode testar chamando as URLs: 
+Você pode testar chamando a URL de `artists-nginx`:  
 
 a. http://localhost:8080/api/artists/
 
 b. http://localhost:8080/api/artists/1/
 
 c. http://localhost:8080/api/artists/1/works/
-
-
-## Para testar a comunicação entre as máquinas (se estão na mesma rede), instale os pacotes ping e curl
-
-```
-apt-get update && apt-get install iputils-ping && apt-get install curl
-```
