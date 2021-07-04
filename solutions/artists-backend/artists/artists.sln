@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artists-api", "artists-api\artists-api.csproj", "{C8FEA132-2F0A-4BEC-9F78-04CDE1C1DDF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8FEA132-2F0A-4BEC-9F78-04CDE1C1DDF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8FEA132-2F0A-4BEC-9F78-04CDE1C1DDF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8FEA132-2F0A-4BEC-9F78-04CDE1C1DDF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8FEA132-2F0A-4BEC-9F78-04CDE1C1DDF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {405DDDC6-D98D-4FFE-9491-6D14750481BA}
+	EndGlobalSection
+EndGlobal
