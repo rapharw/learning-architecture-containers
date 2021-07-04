@@ -1,16 +1,20 @@
-# learning-architecture-containers > VERSION 02
+# learning-architecture-containers > VERSION 03
 
 ![Architecture](../img/solution-v02.png)
 
-Para o exercício version_02, utilizaremos o `docker-compose` para nos auxiliar a subir os serviços.
+Para o exercício version_03, utilizaremos o `docker-compose` para nos auxiliar a subir os serviços.
 
-## Executar o docker-compose
+## 1- Executar o docker-compose
 
 ```
 Caminho: 
 /learning-architecture-containers/solutions
 
-docker compose up
+# remove todas as imagens
+docker compose down --rmi 'all'
+
+# recria as imagens
+docker compose up -d
 ```
 
 Você pode testar chamando a URL de `artists-backend`: 
