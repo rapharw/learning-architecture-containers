@@ -10,7 +10,7 @@ const routes: Routes = [
     component: ArtistsListComponent
   },
   {
-    path: 'artists/:artistId/works', 
+    path: 'artists/works/:artistId', 
     component: ArtistWorksListComponent
   },
   {

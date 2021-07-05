@@ -8,10 +8,11 @@ import { ArtistWorksListComponent } from './artist-works-list/artist-works-list.
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { ArtistCardComponent } from './artist-card/artist-card.component';
+import { ArtistDialogComponent } from './artist-dialog/artist-dialog.component';
 
 
 const components = [
-  ArtistsListComponent, ArtistWorksListComponent, ArtistCardComponent
+  ArtistsListComponent, ArtistWorksListComponent, ArtistCardComponent, ArtistDialogComponent
 ];
 
 @NgModule({

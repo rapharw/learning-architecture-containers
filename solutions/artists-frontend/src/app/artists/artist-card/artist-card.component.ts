@@ -1,4 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { MatDialog } from '@angular/material/dialog';
+import { ArtistDialogComponent } from '../artist-dialog/artist-dialog.component';
 import { Artist } from '../models/Artist';
 
 @Component({
@@ -10,17 +14,25 @@ export class ArtistCardComponent implements OnInit {
 
   @Input() artist: Artist = new Artist();
 
-  constructor() { }
+  constructor(public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   public seePosts(artist: Artist){
-    console.log('see posts artist: ' + artist.name)
+    this.router.navigate([`artists/works`, artist.id ]);
   }
 
   public seeMore(artist: Artist){
-    console.log('see more artist: ' + artist.name)
-  }
 
+    let matDialogDataConfig = {
+        data: {
+          artist
+        }
+    };
+
+    this.dialog.open(ArtistDialogComponent, matDialogDataConfig);
+  
+  }
+  
 }

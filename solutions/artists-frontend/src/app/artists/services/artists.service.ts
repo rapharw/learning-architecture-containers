@@ -13,4 +13,8 @@ export class ArtistsService {
         return this.http.get<Artist[]>(`${URL_API}/api/artists/`);
     }
 
+    findById(id: number) {
+        return this.http.get<Artist>(`${URL_API}/api/artists/${id}/`);
+    }
+
 }

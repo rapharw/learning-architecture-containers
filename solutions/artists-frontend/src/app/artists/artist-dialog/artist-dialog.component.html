@@ -1,0 +1,23 @@
+<app-material-dialog [title]="artist.name">
+
+    <p dialog-content> 
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>ID</mat-label>
+            <input readonly matInput [value]="artist.id"/>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>Area</mat-label>
+            <input readonly matInput [value]="artist.area"/>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>Birthday</mat-label>
+            <input readonly matInput [value]="artist.birthday"/>
+        </mat-form-field>
+    </p>
+
+    <app-a-button mat-dialog-close dialog-actions title="Close"></app-a-button>
+
+</app-material-dialog>

@@ -7,28 +7,27 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+const modules = [
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatCardModule,
+  MatListModule,
+  MatGridListModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule
+]
 
 @NgModule({
-  imports: [
-    MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatListModule,
-    MatGridListModule
-  ],
-  exports: [
-    MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatListModule,
-    MatGridListModule
-  ],
+  imports: modules,
+  exports: modules,
   declarations: [
   ]
 })
