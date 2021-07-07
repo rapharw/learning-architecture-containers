@@ -18,6 +18,13 @@ services:
         - "8080:8080"
         networks:
         - my-network-svc
+    artists-webapp:
+        build: ../solutions/artists-frontend
+        ports:
+        - "4200:4200"
+        networks:
+        - my-network-svc
 networks:
     my-network-svc:
         external: true
+        driver: bridge
