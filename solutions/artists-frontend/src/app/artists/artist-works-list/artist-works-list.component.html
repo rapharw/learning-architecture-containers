@@ -1,0 +1,7 @@
+<h2>Works of {{artist.name}}</h2>
+<mat-list role="list">
+    <div *ngFor="let work of artistWorks">
+        <mat-list-item  role="listitem">{{work.category.type}} - {{work.title}}</mat-list-item>
+        <mat-divider></mat-divider>
+    </div>
+</mat-list>

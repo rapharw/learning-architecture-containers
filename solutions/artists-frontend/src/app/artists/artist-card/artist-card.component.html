@@ -1,0 +1,14 @@
+<app-material-card 
+    [cardTitle]="artist.name"
+    class="artist-card">
+
+    <div card-actions> 
+        <app-a-button (btnClick)="seePosts(artist)" 
+                     title="See Posts" 
+                    color="primary"></app-a-button>
+                    
+        <app-a-button (btnClick)="seeMore(artist)" 
+                     
+                    title="See More"></app-a-button>
+    </div>
+</app-material-card>
