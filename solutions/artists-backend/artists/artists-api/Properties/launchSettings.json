@@ -12,18 +12,26 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "artists",
+      "launchUrl": "api/artists",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "MSSQL_SERVER": "localhost",
+        "MSSQL_USERNAME": "sa",
+        "MSSQL_PASSWORD": "secret@456",
+        "MSSQL_DATABASE": "master"
       }
     },
-    "artists_api": {
+    "artist_works_api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "artists",
+      "launchUrl": "api/artists",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "MSSQL_SERVER": "localhost",
+        "MSSQL_USERNAME": "sa",
+        "MSSQL_PASSWORD": "secret@456",
+        "MSSQL_DATABASE": "master"
       }
     }
   }

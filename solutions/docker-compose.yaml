@@ -4,6 +4,13 @@ services:
         build: ../solutions/artists-backend/artists
         ports:
         - "5001:80"
+        environment: 
+            - MSSQL_SERVER=artists-mssql
+            - MSSQL_USERNAME=sa
+            - MSSQL_PASSWORD=secret@456
+            - MSSQL_DATABASE=master
+        depends_on: 
+            - artists-mssql
     artist-works-api:
         build: ../solutions/artist-works-backend/artist-works
         ports:
@@ -30,3 +37,10 @@ services:
         environment: 
             - MONGO_INITDB_ROOT_USERNAME=mongo
             - MONGO_INITDB_ROOT_PASSWORD=secret@123
+    artists-mssql:
+        image: mcr.microsoft.com/mssql/server:2017-latest
+        ports:
+        - "1433:1433"
+        environment: 
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=secret@456

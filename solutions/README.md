@@ -2,23 +2,15 @@
 
 ![Architecture](../img/solution-v04.png)
 
-Para o exercício version_04, utilizaremos o `docker-compose` para nos auxiliar a subir os serviços.
+A. API .Net Core utilizando SQL Server
 
-A. Refactoring
+B. API Java utilizando MongoDB
 
-B. API Java buscando dados do MongoDB
+C. Melhoria no docker-compose para definir dependencia entre services
 
-C. Rota para popular previamente os dados da Collections: `http://localhost:5002/admin/populate-artist-works`
+D. Refactoring do código
 
-D. Melhoria no docker-compose para definir dependencia entre services
-
-
-## 1- Buildar imagem mongo para a API artist-works-api
-
-```
-Caminho:
-/learning-architecture-containers/solutions
-```
+## MongoDB para API artist-works-api
 
 Modifique o arquivo `docker-compose.yaml` e inclua o conteúdo:
 
@@ -32,17 +24,35 @@ artist-works-mongodb:
         - MONGO_INITDB_ROOT_PASSWORD=secret@123
 ```
 
-## 2- Executar o docker-compose
+### Carga MONGODB
+
+Ao subir os serviços com `docker-compose`, execute a URL de carga:
 
 ```
-Caminho: 
-/learning-architecture-containers/solutions
+http://localhost:5002/admin/populate-artist-works
+```
 
-# remove todas as imagens
-docker compose down --rmi 'all'
+## SQL Server para API artists-api
 
-# recria as imagens
-docker compose up -d
+Modifique o arquivo `docker-compose.yaml` e inclua o conteúdo:
+
+```yaml
+artists-mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+    - "1433:1433"
+    environment: 
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=secret@456
+```
+
+### Script SQL
+
+Ao subir os serviços com `docker-compose`, conecte-se com seu banco de dados e execute o script:
+
+```
+Caminho:
+/learning-architecture-containers/solutions/artists-mssql/ddl_script.sql
 ```
 
 
