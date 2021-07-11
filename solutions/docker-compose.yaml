@@ -4,27 +4,29 @@ services:
         build: ../solutions/artists-backend/artists
         ports:
         - "5001:80"
-        networks:
-        - my-network-svc
     artist-works-api:
         build: ../solutions/artist-works-backend/artist-works
         ports:
         - "5002:5002"
-        networks:
-        - my-network-svc
+        depends_on: 
+            - artist-works-mongodb
     artists-nginx:
         build: ../solutions/nginx
         ports:
         - "8080:8080"
-        networks:
-        - my-network-svc
+        depends_on: 
+            - artist-works-api
+            - artists-api
     artists-webapp:
         build: ../solutions/artists-frontend
         ports:
         - "4200:4200"
-        networks:
-        - my-network-svc
-networks:
-    my-network-svc:
-        external: true
-        driver: bridge
+        depends_on: 
+            - artists-nginx
+    artist-works-mongodb:
+        image: mongo
+        ports:
+        - "27017:27017"
+        environment: 
+            - MONGO_INITDB_ROOT_USERNAME=mongo
+            - MONGO_INITDB_ROOT_PASSWORD=secret@123

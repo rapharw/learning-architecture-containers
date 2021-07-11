@@ -1,11 +1,19 @@
-# learning-architecture-containers > VERSION 03
+# learning-architecture-containers > VERSION 04
 
-![Architecture](../img/solution-v03.png)
+![Architecture](../img/solution-v04.png)
 
-Para o exercício version_03, utilizaremos o `docker-compose` para nos auxiliar a subir os serviços.
+Para o exercício version_04, utilizaremos o `docker-compose` para nos auxiliar a subir os serviços.
+
+A. Refactoring
+
+B. API Java buscando dados do MongoDB
+
+C. Rota para popular previamente os dados da Collections: `http://localhost:5002/admin/populate-artist-works`
+
+D. Melhoria no docker-compose para definir dependencia entre services
 
 
-## 1- Buildar imagem artists-frontend (COM DOCKER-COMPOSE)
+## 1- Buildar imagem mongo para a API artist-works-api
 
 ```
 Caminho:
@@ -15,12 +23,13 @@ Caminho:
 Modifique o arquivo `docker-compose.yaml` e inclua o conteúdo:
 
 ```yaml
-artists-webapp:
-    build: ../solutions/artists-frontend
+artist-works-mongodb:
+    image: mongo
     ports:
-    - "4200:4200"
-    networks:
-    - my-network-svc
+    - "27017:27017"
+    environment: 
+        - MONGO_INITDB_ROOT_USERNAME=mongo
+        - MONGO_INITDB_ROOT_PASSWORD=secret@123
 ```
 
 ## 2- Executar o docker-compose
@@ -51,6 +60,8 @@ b. http://localhost:5001/api/artists/1/
 Você pode testar chamando a URL de `artist-works-backend`: 
 
 a. http://localhost:5002/api/artists/1/works/
+
+b. http://localhost:5002/admin/populate-artist-works
 
 
 Você pode testar chamando a URL de `artists-nginx`:  
