@@ -1,39 +1,58 @@
-# learning-architecture-containers > VERSION 03
+# learning-architecture-containers > VERSION 04
 
-![Architecture](../img/solution-v03.png)
+![Architecture](../img/solution-v04.png)
 
-Para o exercício version_03, utilizaremos o `docker-compose` para nos auxiliar a subir os serviços.
+A. API .Net Core utilizando SQL Server
 
+B. API Java utilizando MongoDB
 
-## 1- Buildar imagem artists-frontend (COM DOCKER-COMPOSE)
+C. Melhoria no docker-compose para definir dependencia entre services
 
-```
-Caminho:
-/learning-architecture-containers/solutions
-```
+D. Refactoring do código
+
+## MongoDB para API artist-works-api
 
 Modifique o arquivo `docker-compose.yaml` e inclua o conteúdo:
 
 ```yaml
-artists-webapp:
-    build: ../solutions/artists-frontend
+artist-works-mongodb:
+    image: mongo
     ports:
-    - "4200:4200"
-    networks:
-    - my-network-svc
+    - "27017:27017"
+    environment: 
+        - MONGO_INITDB_ROOT_USERNAME=mongo
+        - MONGO_INITDB_ROOT_PASSWORD=secret@123
 ```
 
-## 2- Executar o docker-compose
+### Carga MONGODB
+
+Ao subir os serviços com `docker-compose`, execute a URL de carga:
 
 ```
-Caminho: 
-/learning-architecture-containers/solutions
+http://localhost:5002/admin/populate-artist-works
+```
 
-# remove todas as imagens
-docker compose down --rmi 'all'
+## SQL Server para API artists-api
 
-# recria as imagens
-docker compose up -d
+Modifique o arquivo `docker-compose.yaml` e inclua o conteúdo:
+
+```yaml
+artists-mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+    - "1433:1433"
+    environment: 
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=secret@456
+```
+
+### Script SQL
+
+Ao subir os serviços com `docker-compose`, conecte-se com seu banco de dados e execute o script:
+
+```
+Caminho:
+/learning-architecture-containers/solutions/artists-mssql/ddl_script.sql
 ```
 
 
@@ -51,6 +70,8 @@ b. http://localhost:5001/api/artists/1/
 Você pode testar chamando a URL de `artist-works-backend`: 
 
 a. http://localhost:5002/api/artists/1/works/
+
+b. http://localhost:5002/admin/populate-artist-works
 
 
 Você pode testar chamando a URL de `artists-nginx`:  
