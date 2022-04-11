@@ -7,7 +7,6 @@ import br.com.artistworks.domain.Work;
 import br.com.artistworks.repositories.ArtistWorksRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -77,18 +76,22 @@ public class PopulateArtistWorksCollections {
         works_idArtist_4.add(lord_of_the_ring);
 
         hm.put(idArtist_4, ArtistWorks.builder().id(idArtist_4).works(works_idArtist_4).build());
+
+        log.info("Static Populating: {}", hm.size());
     }
 
 
     public void run() {
-        log.info("Delete all");
+        log.info("----- Clear database -----");
         artistWorksRepository.deleteAll();
 
-        log.info("Populating artistWorks");
+        log.info("----- Start Populating artistWorks -----");
         hm.forEach((id, artistWorks) -> {
             artistWorksRepository.save(artistWorks);
             log.info("Saved artistWorks {}", id);
         });
+
+        log.info("----- End Populating artistWorks -----");
     }
 
 }

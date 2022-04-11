@@ -1,5 +1,6 @@
 version: "3.9"
 services: 
+
     artists-api:
         build: ../solutions/artists-backend/artists
         ports:
@@ -11,12 +12,20 @@ services:
             - MSSQL_DATABASE=master
         depends_on: 
             - artists-mssql
+        networks:
+            - artists-network-svc
+
     artist-works-api:
         build: ../solutions/artist-works-backend/artist-works
         ports:
         - "5002:5002"
         depends_on: 
             - artist-works-mongodb
+        networks:
+            - artists-network-svc
+        volumes: 
+            - /var/logs/artist-works-api:/logs/
+
     artists-nginx:
         build: ../solutions/nginx
         ports:
@@ -24,12 +33,18 @@ services:
         depends_on: 
             - artist-works-api
             - artists-api
+        networks:
+            - artists-network-svc
+
     artists-webapp:
         build: ../solutions/artists-frontend
         ports:
         - "4200:4200"
         depends_on: 
             - artists-nginx
+        networks:
+            - artists-network-svc
+
     artist-works-mongodb:
         image: mongo
         ports:
@@ -37,6 +52,9 @@ services:
         environment: 
             - MONGO_INITDB_ROOT_USERNAME=mongo
             - MONGO_INITDB_ROOT_PASSWORD=secret@123
+        networks:
+            - artists-network-svc
+
     artists-mssql:
         image: mcr.microsoft.com/mssql/server:2017-latest
         ports:
@@ -44,3 +62,10 @@ services:
         environment: 
             - ACCEPT_EULA=Y
             - SA_PASSWORD=secret@456
+        networks:
+            - artists-network-svc
+
+networks:
+    artists-network-svc:
+        external: true
+        name: my-network-svc

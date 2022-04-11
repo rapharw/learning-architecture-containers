@@ -1,0 +1,26 @@
+2021-07-18 16:41:32.983  INFO 99435 --- [main] b.c.a.ArtistWorksApplicationTests        : Starting ArtistWorksApplicationTests using Java 11.0.10 on MacBook-Pro-de-Raphael.local with PID 99435 (started by raphaelrw in /Users/raphaelrw/Documents/GitHub/learning-architecture-containers/solutions/artist-works-backend/artist-works)
+2021-07-18 16:41:32.989  INFO 99435 --- [main] b.c.a.ArtistWorksApplicationTests        : No active profile set, falling back to default profiles: default
+2021-07-18 16:41:34.151  INFO 99435 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2021-07-18 16:41:34.223  INFO 99435 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 1 MongoDB repository interfaces.
+2021-07-18 16:41:34.909  INFO 99435 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[artist-works-mongodb:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2021-07-18 16:41:34.968  INFO 99435 --- [cluster-ClusterId{value='60f483ee06f56c7dadba4bb6', description='null'}-artist-works-mongodb:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server artist-works-mongodb:27017
+
+com.mongodb.MongoSocketException: artist-works-mongodb
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:211) ~[mongodb-driver-core-4.2.3.jar:na]
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:75) ~[mongodb-driver-core-4.2.3.jar:na]
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:65) ~[mongodb-driver-core-4.2.3.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:143) ~[mongodb-driver-core-4.2.3.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:188) ~[mongodb-driver-core-4.2.3.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144) ~[mongodb-driver-core-4.2.3.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.net.UnknownHostException: artist-works-mongodb
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797) ~[na:na]
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:883) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1505) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1364) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1298) ~[na:na]
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:203) ~[mongodb-driver-core-4.2.3.jar:na]
+	... 6 common frames omitted
+
+2021-07-18 16:41:35.579  INFO 99435 --- [main] b.c.a.i.PopulateArtistWorksCollections   : Static Populating: 3
+2021-07-18 16:41:36.564  INFO 99435 --- [main] b.c.a.ArtistWorksApplicationTests        : Started ArtistWorksApplicationTests in 9.169 seconds (JVM running for 10.977)

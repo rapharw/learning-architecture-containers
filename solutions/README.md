@@ -2,6 +2,16 @@
 
 ![Architecture](../img/solution-v04.png)
 
+
+docker-compose -f docker-compose.yaml up -d
+
+
+
+
+
+
+
+
 A. API .Net Core utilizando SQL Server
 
 B. API Java utilizando MongoDB
